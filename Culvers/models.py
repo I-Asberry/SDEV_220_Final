@@ -1,7 +1,10 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 # Create your models here.
+# What the admin will be able to see and do.
+
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()

@@ -7,7 +7,8 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="pt-5">
-                    {% for burger in BUTTERBURGERS %}
+                    <h2>Butterburgers</h2>
+                {% for burger in BUTTERBURGERS %}
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
                             
@@ -28,7 +29,8 @@
                 </div>
 
                 <div class="pt-5">
-                    {% for chicken in chicken_sandwhiches %}
+                    <h2>Chicken & Sandwiches</h2>
+                {% for chicken in chicken_sandwhich %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
                             
@@ -45,10 +47,11 @@
                         </div>
                     </div>
                     <hr />
-                    {% endfor %}
+                {% endfor %}
                 </div>
 
                 <div class="pt-5">
+                    <h2>Seafood & Salads</h2>
                     {% for seafood in seafood_salad %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
@@ -70,6 +73,7 @@
                 </div>
 
                 <div class="pt-5">
+                    <h2>Sides</h2>
                     {% for side in sides %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
@@ -91,6 +95,7 @@
                 </div>
 
                 <div class="pt-5">
+                    <h2>Drinks</h2>
                     {% for drink in drinks %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
@@ -112,6 +117,7 @@
                 </div>
 
                 <div class="pt-5">
+                    <h2>Fresh Frozen Custard</h2>
                     {% for custard in frozen_custard %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import MenuItem, Category, Order
+from .models import MenuItem, Category, Ordering
 
 # Create your views here.
 class Index(View):
@@ -14,20 +14,19 @@ class Order(View):
     def get(self, request, *args, **kwargs):
         
         #get item from each category
-        BUTTERBURGERS = MenuItem.objects.filter(category__name__contains='BUTTERBURGERS')
-        chicken_sandwhich = MenuItem.objects.filter(category__name__contains='Chicken & Sandwhiches')
-        seafood_salad = MenuItem.objects.filter(category__name__contains='Seafood & Salads')
-        sides = MenuItem.objects.filter(category__name__contains='Sides')
-        drinks = MenuItem.objects.filter(category__name__contains='Drinks')
-        frozen_custard = MenuItem.objects.filter(category__name__contains='Fresh Frozen Custard')
+        Entrees = MenuItem.objects.filter(category__name__contains='Entree')
+        Sides = MenuItem.objects.filter(category__name__contains='Side')
+        Desserts = MenuItem.objects.filter(category__name__contains='Dessert')
+        Drinks = MenuItem.objects.filter(category__name__contains='Drink')
+        Sauces = MenuItem.objects.filter(category__name__contains='Sauce')
+        
         #pass into context
         context = {
-            'BUTTERBURGERS': BUTTERBURGERS,
-            'chicken_sandwhich': chicken_sandwhich,
-            'seafood_salad': seafood_salad,
-            'sides': sides,
-            'drinks': drinks,
-            'frozen_custard': frozen_custard,
+            'Entrees': Entrees,
+            'Sides': Sides,
+            'Desserts': Desserts,
+            'Drinks': Drinks,
+            'Sauces': Sauces, 
         }
 
         #render templates
@@ -63,8 +62,9 @@ class Order(View):
             price += item['price']
             item_ids.append(item['id'])
 
+
         #set price to total price
-        order = Order.objects.create(price=price)
+        order = Ordering.objects.create(price=price)
         order.items.add(*item_ids)
 
         context = {

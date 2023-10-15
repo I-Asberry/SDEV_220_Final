@@ -7,8 +7,8 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="pt-5">
-                    <h2>Butterburgers</h2>
-                {% for burger in BUTTERBURGERS %}
+                    <h2>Entrees</h2>
+                {% for entree in Entrees %}
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
                             
@@ -16,68 +16,24 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ burger.pk }}">
-                                    <label class="form-check-label">{{ burger.name }}</label>
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ entree.pk }}">
+                                    <label class="form-check-label">{{ entree.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ burger.price }}</p>
+                                <p class="font-weight-bold pl-5">{{ entree.price }}</p>
                             </div>
-                            <p>{{ burger.description }}</p>
+                            <p>{{ entree.description }}</p>
                         </div>
                     </div>
                     <hr />
                 {% endfor %}
-                </div>
-
-                <div class="pt-5">
-                    <h2>Chicken & Sandwiches</h2>
-                {% for chicken in chicken_sandwhich %}
-                    <div class="row mt-4">
-                        <div class="col-md-2 col-sm-12">
-                            
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ chicken.pk }}">
-                                    <label class="form-check-label">{{ chicken.name }}</label>
-                                </div>
-                                <p class="font-weight-bold pl-5">{{ chicken.price }}</p>
-                            </div>
-                            <p>{{ chicken.description }}</p>
-                        </div>
-                    </div>
-                    <hr />
-                {% endfor %}
-                </div>
-
-                <div class="pt-5">
-                    <h2>Seafood & Salads</h2>
-                    {% for seafood in seafood_salad %}
-                    <div class="row mt-4">
-                        <div class="col-md-2 col-sm-12">
-                           
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ seafood.pk }}">
-                                    <label class="form-check-label">{{ seafood.name }}</label>
-                                </div>
-                                <p class="font-weight-bold pl-5">{{ seafood.price }}</p>
-                            </div>
-                            <p>{{ seafood.description }}</p>
-                        </div>
-                    </div>
-                    <hr />
-                    {% endfor %}
                 </div>
 
                 <div class="pt-5">
                     <h2>Sides</h2>
-                    {% for side in sides %}
+                {% for side in Sides %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
-                           
+                            
                         </div>
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
@@ -91,12 +47,36 @@
                         </div>
                     </div>
                     <hr />
-                    {% endfor %}
+                {% endfor %}
                 </div>
 
                 <div class="pt-5">
                     <h2>Drinks</h2>
-                    {% for drink in drinks %}
+                {% for drink in Drinks %}
+                    {% if drink not in Desserts %}
+                        <div class="row mt-4">
+                            <div class="col-md-2 col-sm-12">
+                                        
+                            </div>
+                            <div class="col-md-8 col-sm-12">
+                                <div class="d-flex flex-row">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" name="items[]" class="form-check-input" value="{{ drink.pk }}">
+                                        <label class="form-check-label">{{ drink.name }}</label>
+                                    </div>
+                                    <p class="font-weight-bold pl-5">{{ drink.price }}</p>
+                                </div>
+                                <p>{{ drink.description }}</p>
+                            </div>
+                        </div>
+                        <hr />
+                    {% endif %}
+                {% endfor %}
+                </div>
+
+                <div class="pt-5">
+                    <h2>Desserts</h2>
+                    {% for dessert in Desserts %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
                            
@@ -104,12 +84,12 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ drink.pk }}">
-                                    <label class="form-check-label">{{ drink.name }}</label>
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ dessert.pk }}">
+                                    <label class="form-check-label">{{ dessert.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ drink.price }}</p>
+                                <p class="font-weight-bold pl-5">{{ dessert.price }}</p>
                             </div>
-                            <p>{{ drink.description }}</p>
+                            <p>{{ dessert.description }}</p>
                         </div>
                     </div>
                     <hr />
@@ -117,8 +97,8 @@
                 </div>
 
                 <div class="pt-5">
-                    <h2>Fresh Frozen Custard</h2>
-                    {% for custard in frozen_custard %}
+                    <h2>Sauces</h2>
+                    {% for sauce in Sauces %}
                     <div class="row mt-4">
                         <div class="col-md-2 col-sm-12">
                            
@@ -126,12 +106,12 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ custard.pk }}">
-                                    <label class="form-check-label">{{ custard.name }}</label>
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ sauce.pk }}">
+                                    <label class="form-check-label">{{ sauce.name }}</label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ custard.price }}</p>
+                                <p class="font-weight-bold pl-5">{{ sauce.price }}</p>
                             </div>
-                            <p>{{ custard.description }}</p>
+                            <p>{{ sauce.description }}</p>
                         </div>
                     </div>
                     <hr />
